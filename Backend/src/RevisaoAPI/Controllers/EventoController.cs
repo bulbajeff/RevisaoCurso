@@ -40,17 +40,15 @@ namespace RevisaoAPI.Controllers
         }
 
         [HttpGet]
-        public string Get()
+        public IEnumerable<Evento> Get()
         {
-            return "Verbo HttpGet";
+            return _evento;
         }
 
-
-
         [HttpGet("{id}")]
-        public string GetById()
+        public IEnumerable<Evento> GetById(int id)
         {
-            return "Verbo HttpGet pelo Id";
+            return _evento.Where(e => e.EventoId == id);
         }
 
         [HttpPost]
@@ -66,9 +64,11 @@ namespace RevisaoAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public string PutById()
+        public IEnumerable<Evento> PutById(int id)
         {
-            return "Verbo HttpPut pelo Id";
+            _evento.Where(e => e.EventoId == id);
+
+            return _evento;
         }
 
         [HttpDelete]
@@ -78,9 +78,11 @@ namespace RevisaoAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public string DeleteById()
+        public IEnumerable<Evento> DeleteById(int id)
         {
-            return "Verbo HttpDelete pelo Id";
+            return _evento.Where(e => e.EventoId == id);
+            
+            
         }
     }
 }
